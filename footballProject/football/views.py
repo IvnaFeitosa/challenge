@@ -1,24 +1,15 @@
-# views.py
-import requests
+# football/views.py
 from django.http import JsonResponse
-from django.views import View
-from .models import models
+from .utils import get_teams, get_past_matches, get_upcoming_matches
 
+def teams_view(request):
+    teams = get_teams()
+    return JsonResponse(teams)  # Respond with JSON
 
-class FetchDataFromAPI(View):
-    def get(self, request):
-        
-        url = 'https://api.football-data.org/v4/competitions/?areas=2032'
-        headers = {
-            'X-Auth-Token': '566461e47e184fa88db7f9d0d7a1dbac',  
-        }
+def past_matches_view(request):
+    matches = get_past_matches()
+    return JsonResponse(matches)  # Respond with JSON
 
-        # Fazendo a requisição à API
-        response = requests.get(url, headers=headers)
-
-        # Verifica se a requisição foi bem-sucedida
-        if response.status_code == 200:
-            data = response.json()  # Converte a resposta para JSON
-            return JsonResponse(data)  # Retorna a resposta como JSON
-        else:
-            return JsonResponse({'error': 'Erro ao acessar a API'}, status=response.status_code)
+def upcoming_matches_view(request):
+    matches = get_upcoming_matches()
+    return JsonResponse(matches)  # Respond with JSON

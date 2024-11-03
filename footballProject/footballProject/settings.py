@@ -11,9 +11,26 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import environ
+import os
+
+import os
+from pathlib import Path
+import environ
+
+# Initialize environment variables
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Read the .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+
+
+FOOTBALL_DATA_API_KEY = os.getenv('FOOTBALL_DATA_API_KEY')
+
 
 
 # Quick-start development settings - unsuitable for production
