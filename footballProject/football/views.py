@@ -1,15 +1,23 @@
-# football/views.py
 from django.http import JsonResponse
-from .utils import get_teams, get_past_matches, get_upcoming_matches
+from .utils import fetch_and_save_data
 
 def teams_view(request):
-    teams = get_teams()
-    return JsonResponse(teams)  # Respond with JSON
+    try:
+        fetch_and_save_data()  
+        return JsonResponse({'message': 'Dados das equipes salvos  sucesso'})
+    except Exception as e:
+        return JsonResponse({'error': f'Erro ao salvar dados das equipes: {str(e)}'})
 
 def past_matches_view(request):
-    matches = get_past_matches()
-    return JsonResponse(matches)  # Respond with JSON
+    try:
+        fetch_and_save_data()  
+        return JsonResponse({'message': 'Dados das partidas passadas salvos com sucesso'})
+    except Exception as e:
+        return JsonResponse({'error': f'Erro ao salvar dados das partidas passadas: {str(e)}'})
 
 def upcoming_matches_view(request):
-    matches = get_upcoming_matches()
-    return JsonResponse(matches)  # Respond with JSON
+    try:
+        fetch_and_save_data()  
+        return JsonResponse({'message': 'Dados das próximas partidas salvos com sucesso'})
+    except Exception as e:
+        return JsonResponse({'error': f'Erro ao salvar dados das próximas partidas: {str(e)}'})

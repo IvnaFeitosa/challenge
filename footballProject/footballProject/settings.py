@@ -18,13 +18,13 @@ import os
 from pathlib import Path
 import environ
 
-# Initialize environment variables
+
 env = environ.Env()
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Read the .env file
+
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'football',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +66,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', 
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173", 
 ]
 
 ROOT_URLCONF = 'footballProject.urls'
@@ -95,6 +101,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'OPTIONS': {
+            'timeout': 10,
+        }
     }
 }
 
