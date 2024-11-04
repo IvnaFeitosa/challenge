@@ -2,6 +2,8 @@
 
 Este projeto fornece uma visualização da posição dos times no Campeonato Brasileiro Série A, utilizando Django no backend e React no frontend.
 
+Além disso, o usuário pode interagir com o sistema selecionado o time que deseja ver mais impormações, como emblema, vitórias, derrotas e empates
+
 ## Tecnologias Utilizadas
 
 - **Backend:** Django, Python, SQLite
