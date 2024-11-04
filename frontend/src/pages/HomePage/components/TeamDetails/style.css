@@ -1,0 +1,18 @@
+.team-escudo {
+    width: 100px; 
+    height: auto;
+  }
+  
+  .team-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ml-3 {
+    margin-left: 1rem;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  

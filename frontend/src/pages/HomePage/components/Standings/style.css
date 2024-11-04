@@ -1,0 +1,9 @@
+.standings-table {
+    margin: 0 auto;
+    width: 80%;
+  }
+  
+  .standings-table th, .standings-table td {
+    text-align: center;
+  }
+  
